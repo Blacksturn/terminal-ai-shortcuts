@@ -27,26 +27,42 @@
     "commands": [
       {
         "command": "terminalShortcuts.run",
-        "title": "Terminal Shortcuts: Exécuter…"
+        "title": "Terminal AI Shortcuts: Exécuter…"
       },
       {
         "command": "terminalShortcuts.refresh",
-        "title": "Terminal Shortcuts: Recharger"
+        "title": "Terminal AI Shortcuts: Recharger"
       },
       {
         "command": "terminalShortcuts.openConfig",
-        "title": "Terminal Shortcuts: Ouvrir la configuration"
+        "title": "Terminal AI Shortcuts: Ouvrir la configuration"
       },
       {
         "command": "terminalShortcuts.runShortcut",
-        "title": "Terminal Shortcuts: Exécuter un raccourci",
+        "title": "Terminal AI Shortcuts: Exécuter un raccourci",
         "enablement": "false"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "terminalAiShortcuts",
+          "title": "Terminal AI Shortcuts",
+          "icon": "$(terminal)"
+        }
+      ]
+    },
     "views": {
-      "explorer": [
+      "terminalAiShortcuts": [
         {
           "id": "terminalShortcutsView",
+          "name": "Terminal AI Shortcuts",
+          "when": "true"
+        }
+      ],
+      "explorer": [
+        {
+          "id": "terminalShortcutsViewExplorer",
           "name": "Terminal AI Shortcuts"
         }
       ]
@@ -55,12 +71,12 @@
       "view/title": [
         {
           "command": "terminalShortcuts.openConfig",
-          "when": "view == terminalShortcutsView",
+          "when": "view == terminalShortcutsView || view == terminalShortcutsViewExplorer",
           "group": "navigation@1"
         },
         {
           "command": "terminalShortcuts.refresh",
-          "when": "view == terminalShortcutsView",
+          "when": "view == terminalShortcutsView || view == terminalShortcutsViewExplorer",
           "group": "navigation@2"
         }
       ],

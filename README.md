@@ -3,7 +3,7 @@
 Extension VS Code pour créer des boutons intelligents qui ouvrent un terminal intégré et exécutent des commandes prédéfinies avec l'aide de l'IA.
 
 ## Installation
-- Ouvrez ce dossier dans VS Code: `terminal-shortcuts/`
+- Ouvrez ce dossier dans VS Code: `terminal-ai-shortcuts/`
 - Installez les dépendances: `npm install`
 - Compilez: `npm run compile`
 - Lancez en mode Extension: `F5` (Exécuter et déboguer > Lancer une fenêtre d’extension)

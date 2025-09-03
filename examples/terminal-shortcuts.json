@@ -97,6 +97,34 @@
         "light": "images/light/deploy.svg",
         "dark": "images/dark/deploy.svg"
       }
+    },
+    {
+      "id": "claude",
+      "label": "Claude AI",
+      "command": "claude --dangerously-skip-permissions",
+      "terminalName": "Claude",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "robot",
+      "icon": {
+        "light": "images/light/build.svg",
+        "dark": "images/dark/build.svg"
+      }
+    },
+    {
+      "id": "qwen",
+      "label": "Qwen AI (WSL)",
+      "command": "wsl qwen -y",
+      "terminalName": "Qwen",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "terminal-linux",
+      "icon": {
+        "light": "images/light/test.svg",
+        "dark": "images/dark/test.svg"
+      }
     }
   ]
 }
