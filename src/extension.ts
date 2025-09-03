@@ -85,6 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
     (s) => resolveTreeItemIcon(context, s)
   );
   vscode.window.registerTreeDataProvider('terminalShortcutsView', treeProvider);
+  vscode.window.registerTreeDataProvider('terminalShortcutsViewExplorer', treeProvider);
 
   disposables.push(
     vscode.commands.registerCommand('terminalShortcuts.run', async () => {

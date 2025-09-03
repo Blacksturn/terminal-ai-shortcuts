@@ -1,0 +1,61 @@
+{
+  "commands": [
+    {
+      "id": "claude-skip-permissions",
+      "label": "Claude (Skip Permissions)",
+      "command": "claude --dangerously-skip-permissions",
+      "terminalName": "Claude",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "robot",
+      "statusBarText": "Claude",
+      "icon": {
+        "light": "images/light/build.svg",
+        "dark": "images/dark/build.svg"
+      }
+    },
+    {
+      "id": "powershell",
+      "label": "PowerShell",
+      "command": "powershell",
+      "terminalName": "PowerShell",
+      "reuse": true,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "terminal-powershell",
+      "icon": {
+        "light": "images/light/test.svg",
+        "dark": "images/dark/test.svg"
+      }
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "command": "npm run build",
+      "terminalName": "Build",
+      "reuse": true,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "tools",
+      "icon": {
+        "light": "images/light/build.svg",
+        "dark": "images/dark/build.svg"
+      }
+    },
+    {
+      "id": "test",
+      "label": "Test",
+      "command": "npm test",
+      "terminalName": "Test",
+      "reuse": true,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "beaker",
+      "icon": {
+        "light": "images/light/test.svg",
+        "dark": "images/dark/test.svg"
+      }
+    }
+  ]
+}
