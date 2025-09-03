@@ -1,14 +1,14 @@
 {
-  "name": "terminal-shortcuts",
-  "displayName": "Terminal Shortcuts",
-  "description": "Créez des boutons pour lancer des commandes dans le terminal intégré de VS Code.",
+  "name": "terminal-ai-shortcuts",
+  "displayName": "Terminal AI Shortcuts",
+  "description": "Créez des boutons intelligents pour lancer des commandes dans le terminal intégré de VS Code avec l'aide de l'IA.",
   "version": "0.1.0",
   "publisher": "julien-dev",
   "icon": "images/icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/julien/terminal-shortcuts.git"
+    "url": "https://github.com/Blacksturn/terminal-ai-shortcuts.git"
   },
   "engines": {
     "vscode": "^1.80.0"
@@ -47,7 +47,7 @@
       "explorer": [
         {
           "id": "terminalShortcutsView",
-          "name": "Terminal Shortcuts"
+          "name": "Terminal AI Shortcuts"
         }
       ]
     },
@@ -80,7 +80,7 @@
       ]
     },
     "configuration": {
-      "title": "Terminal Shortcuts",
+      "title": "Terminal AI Shortcuts",
       "type": "object",
       "properties": {
         "terminalShortcuts.showInStatusBar": {

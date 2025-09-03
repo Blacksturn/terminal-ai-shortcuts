@@ -331,6 +331,7 @@ async function runShortcut(s: TerminalShortcutConfig) {
       name,
       cwd: s.cwd,
       env: s.env,
+      location: vscode.TerminalLocation.Editor
     };
     terminal = vscode.window.createTerminal(options);
   }

@@ -1,6 +1,6 @@
-# Terminal Shortcuts
+# Terminal AI Shortcuts
 
-Extension VS Code pour créer des boutons de raccourci qui ouvrent un terminal intégré et exécutent des commandes prédéfinies.
+Extension VS Code pour créer des boutons intelligents qui ouvrent un terminal intégré et exécutent des commandes prédéfinies avec l'aide de l'IA.
 
 ## Installation
 - Ouvrez ce dossier dans VS Code: `terminal-shortcuts/`
@@ -10,7 +10,7 @@ Extension VS Code pour créer des boutons de raccourci qui ouvrent un terminal i
 
 ## Fonctionnalités
 - Boutons de raccourci visibles:
-  - Vue Explorer: panneau "Terminal Shortcuts" avec icônes light/dark.
+  - Vue Explorer: panneau "Terminal AI Shortcuts" avec icônes light/dark.
   - Barre d’état (optionnelle): un bouton par raccourci.
 - Gestion des terminaux:
   - Création/réutilisation de terminal selon le raccourci.
@@ -111,11 +111,11 @@ Notes:
   - ou des chemins absolus.
 
 ## Utilisation
-- Ouvrir la palette: `Terminal Shortcuts: Exécuter…` et choisir un raccourci
-- Panneau Explorer: cliquer sur un bouton dans la vue "Terminal Shortcuts"
-- Barre d’état: cliquer sur les boutons si activés
-- Recharger la configuration: `Terminal Shortcuts: Recharger`
-- Ouvrir/Créer la config JSON: `Terminal Shortcuts: Ouvrir la configuration`
+- Ouvrir la palette: `Terminal AI Shortcuts: Exécuter…` et choisir un raccourci
+- Panneau Explorer: cliquer sur un bouton dans la vue "Terminal AI Shortcuts"
+- Barre d'état: cliquer sur les boutons si activés
+- Recharger la configuration: `Terminal AI Shortcuts: Recharger`
+- Ouvrir/Créer la config JSON: `Terminal AI Shortcuts: Ouvrir la configuration`
 
 ## Exemples de configuration
 - Exemple prêt à copier: `examples/terminal-shortcuts.json` (Node, Docker, etc.).
