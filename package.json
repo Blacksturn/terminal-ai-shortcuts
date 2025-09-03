@@ -2,7 +2,7 @@
   "name": "terminal-ai-shortcuts",
   "displayName": "Terminal AI Shortcuts",
   "description": "Créez des boutons intelligents pour lancer des commandes dans le terminal intégré de VS Code avec l'aide de l'IA.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "julien-dev",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -28,6 +28,19 @@
       {
         "command": "terminalShortcuts.run",
         "title": "Terminal AI Shortcuts: Exécuter…"
+      },
+      {
+        "command": "terminalShortcuts.openGui",
+        "title": "Terminal AI Shortcuts: Configurer (GUI)"
+      },
+      {
+        "command": "terminalShortcuts.addGlobal",
+        "title": "Terminal AI Shortcuts: Ajouter un raccourci global"
+      },
+      {
+        "command": "terminalShortcuts.pinToGlobal",
+        "title": "Terminal AI Shortcuts: Épingler globalement",
+        "enablement": "false"
       },
       {
         "command": "terminalShortcuts.refresh",
@@ -78,11 +91,31 @@
           "command": "terminalShortcuts.refresh",
           "when": "view == terminalShortcutsView || view == terminalShortcutsViewExplorer",
           "group": "navigation@2"
+        },
+        {
+          "command": "terminalShortcuts.openGui",
+          "when": "view == terminalShortcutsView || view == terminalShortcutsViewExplorer",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "terminalShortcuts.pinToGlobal",
+          "when": "viewItem == terminalShortcutItem && (view == terminalShortcutsView || view == terminalShortcutsViewExplorer)",
+          "group": "inline@1"
         }
       ],
       "commandPalette": [
         {
           "command": "terminalShortcuts.run",
+          "group": "navigation"
+        },
+        {
+          "command": "terminalShortcuts.openGui",
+          "group": "navigation"
+        },
+        {
+          "command": "terminalShortcuts.addGlobal",
           "group": "navigation"
         },
         {
@@ -99,6 +132,11 @@
       "title": "Terminal AI Shortcuts",
       "type": "object",
       "properties": {
+        "terminalShortcuts.mergeUserAndWorkspace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Fusionner les raccourcis des paramètres utilisateur avec ceux du workspace (le fichier du workspace a priorité par id)."
+        },
         "terminalShortcuts.showInStatusBar": {
           "type": "boolean",
           "default": false,
@@ -181,6 +219,17 @@
                   "light": { "type": "string" },
                   "dark": { "type": "string" }
                 }
+              },
+              "location": {
+                "type": "string",
+                "enum": ["editor", "panel"],
+                "default": "editor",
+                "description": "Où ouvrir le terminal pour ce raccourci (éditeur principal ou panneau bas)."
+              },
+              "viewColumn": {
+                "type": "number",
+                "default": 0,
+                "description": "Colonne d’éditeur (1,2,3). 0=active. Utilisé si location=editor."
               }
             }
           },

@@ -12,6 +12,7 @@ Extension VS Code pour créer des boutons intelligents qui ouvrent un terminal i
 - Boutons de raccourci visibles:
   - Vue Explorer: panneau "Terminal AI Shortcuts" avec icônes light/dark.
   - Barre d’état (optionnelle): un bouton par raccourci.
+  - GUI incluse: configuration visuelle des raccourcis (ajout/édition simples).
 - Gestion des terminaux:
   - Création/réutilisation de terminal selon le raccourci.
   - Exécution immédiate de la commande.
@@ -22,7 +23,7 @@ Extension VS Code pour créer des boutons intelligents qui ouvrent un terminal i
   - Icônes personnalisées (mode clair/sombre) pour la vue Explorer.
 
 ## Configuration
-Deux méthodes complémentaires (le fichier JSON a priorité si présent):
+Deux méthodes complémentaires (fusion par défaut, le fichier JSON du projet a priorité par id):
 
 1) Paramètres VS Code (`settings.json`):
 - `terminalShortcuts.commands`: tableau d’objets raccourci
@@ -102,6 +103,8 @@ Champs d’un raccourci:
 - `codicon`: icône codicon pour la barre d’état (ex: `rocket`, `tools`, `beaker`)
 - `statusBarText`: texte personnalisé en barre d’état; sinon `label`
 - `icon.light` / `icon.dark`: icônes SVG/PNG pour la vue Explorer (light/dark)
+ - `location`: `editor` (par défaut) ou `panel` pour ouvrir le terminal dans la fenêtre principale ou le panneau bas
+ - `viewColumn`: `1|2|3` (0=active) si `location=editor`
 
 Notes:
 - Les icônes de barre d’état utilisent les codicons internes VS Code.
@@ -110,12 +113,24 @@ Notes:
   - des chemins relatifs au workspace (`./icons/my.svg`),
   - ou des chemins absolus.
 
+Mécanique de fusion:
+- Par défaut (`terminalShortcuts.mergeUserAndWorkspace: true`), les raccourcis définis dans les Paramètres utilisateur sont ajoutés à ceux du fichier JSON du projet.
+- En cas de conflit d’`id`, la définition du projet (fichier JSON) prime; les autres sont ajoutées en complément.
+- Pour désactiver ce comportement et n’utiliser que le fichier JSON du projet quand il existe, mettez `terminalShortcuts.mergeUserAndWorkspace` à `false`.
+
 ## Utilisation
 - Ouvrir la palette: `Terminal AI Shortcuts: Exécuter…` et choisir un raccourci
 - Panneau Explorer: cliquer sur un bouton dans la vue "Terminal AI Shortcuts"
 - Barre d'état: cliquer sur les boutons si activés
 - Recharger la configuration: `Terminal AI Shortcuts: Recharger`
 - Ouvrir/Créer la config JSON: `Terminal AI Shortcuts: Ouvrir la configuration`
+- Créer un global simple (sans éditer de JSON): `Terminal AI Shortcuts: Ajouter un raccourci global` (prompts)
+- Épingler un raccourci de la vue en global: clic droit sur l’item > `Épingler globalement`
+- Ouvrir l’interface graphique: `Terminal AI Shortcuts: Configurer (GUI)`
+   - Bouton "Choisir…" permet de sélectionner un terminal déjà ouvert pour remplir automatiquement `terminalName`.
+   - Bouton "Dupliquer en global" copie le raccourci du formulaire vers vos Paramètres utilisateur (avec gestion de conflit d’id).
+   - Rubrique « Aide » intégrée avec rappels d’utilisation.
+   - Bouton "Ouvrir JSON du projet" ouvre/ crée `.vscode/terminal-shortcuts.json` pour un ajustement manuel si nécessaire.
 
 ## Exemples de configuration
 - Exemple prêt à copier: `examples/terminal-shortcuts.json` (Node, Docker, etc.).
