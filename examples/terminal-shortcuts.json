@@ -1,0 +1,103 @@
+{
+  "commands": [
+    {
+      "id": "dev",
+      "label": "Dev",
+      "command": "npm run dev",
+      "terminalName": "Dev",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "play",
+      "icon": {
+        "light": "images/light/build.svg",
+        "dark": "images/dark/build.svg"
+      }
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "command": "npm run build",
+      "terminalName": "Build",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "tools",
+      "icon": {
+        "light": "images/light/build.svg",
+        "dark": "images/dark/build.svg"
+      }
+    },
+    {
+      "id": "test",
+      "label": "Test",
+      "command": "npm test",
+      "terminalName": "Test",
+      "reuse": true,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "beaker",
+      "icon": {
+        "light": "images/light/test.svg",
+        "dark": "images/dark/test.svg"
+      }
+    },
+    {
+      "id": "lint",
+      "label": "Lint",
+      "command": "npm run lint",
+      "terminalName": "Lint",
+      "reuse": true,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "check",
+      "icon": {
+        "light": "images/light/test.svg",
+        "dark": "images/dark/test.svg"
+      }
+    },
+    {
+      "id": "dockerUp",
+      "label": "Docker Up",
+      "command": "docker compose up",
+      "terminalName": "Docker Up",
+      "reuse": false,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "debug-start",
+      "icon": {
+        "light": "images/light/deploy.svg",
+        "dark": "images/dark/deploy.svg"
+      }
+    },
+    {
+      "id": "dockerDown",
+      "label": "Docker Down",
+      "command": "docker compose down",
+      "terminalName": "Docker Down",
+      "reuse": true,
+      "focus": true,
+      "statusBar": false,
+      "codicon": "debug-stop",
+      "icon": {
+        "light": "images/light/deploy.svg",
+        "dark": "images/dark/deploy.svg"
+      }
+    },
+    {
+      "id": "deploy",
+      "label": "Deploy",
+      "command": "echo Deploy… && ./deploy.sh",
+      "terminalName": "Deploy",
+      "reuse": false,
+      "focus": true,
+      "statusBar": true,
+      "codicon": "rocket",
+      "icon": {
+        "light": "images/light/deploy.svg",
+        "dark": "images/dark/deploy.svg"
+      }
+    }
+  ]
+}
+

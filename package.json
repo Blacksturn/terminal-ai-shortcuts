@@ -1,0 +1,231 @@
+{
+  "name": "terminal-shortcuts",
+  "displayName": "Terminal Shortcuts",
+  "description": "Créez des boutons pour lancer des commandes dans le terminal intégré de VS Code.",
+  "version": "0.1.0",
+  "publisher": "julien-dev",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julien/terminal-shortcuts.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Productivity"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "workspaceContains:.vscode/terminal-shortcuts.json",
+    "workspaceContains:terminal-shortcuts.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "terminalShortcuts.run",
+        "title": "Terminal Shortcuts: Exécuter…"
+      },
+      {
+        "command": "terminalShortcuts.refresh",
+        "title": "Terminal Shortcuts: Recharger"
+      },
+      {
+        "command": "terminalShortcuts.openConfig",
+        "title": "Terminal Shortcuts: Ouvrir la configuration"
+      },
+      {
+        "command": "terminalShortcuts.runShortcut",
+        "title": "Terminal Shortcuts: Exécuter un raccourci",
+        "enablement": "false"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "terminalShortcutsView",
+          "name": "Terminal Shortcuts"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "terminalShortcuts.openConfig",
+          "when": "view == terminalShortcutsView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "terminalShortcuts.refresh",
+          "when": "view == terminalShortcutsView",
+          "group": "navigation@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "terminalShortcuts.run",
+          "group": "navigation"
+        },
+        {
+          "command": "terminalShortcuts.openConfig",
+          "group": "navigation"
+        },
+        {
+          "command": "terminalShortcuts.refresh",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Terminal Shortcuts",
+      "type": "object",
+      "properties": {
+        "terminalShortcuts.showInStatusBar": {
+          "type": "boolean",
+          "default": false,
+          "description": "Afficher un bouton dans la barre d'état pour chaque raccourci."
+        },
+        "terminalShortcuts.statusBar.alignment": {
+          "type": "string",
+          "enum": ["left", "right"],
+          "default": "left",
+          "description": "Alignement des boutons dans la barre d'état."
+        },
+        "terminalShortcuts.statusBar.priority": {
+          "type": "number",
+          "default": 100,
+          "description": "Priorité d'affichage des boutons de la barre d'état."
+        },
+        "terminalShortcuts.commands": {
+          "type": "array",
+          "description": "Liste des raccourcis personnalisés.",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "command"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Identifiant unique du raccourci."
+              },
+              "label": {
+                "type": "string",
+                "description": "Libellé affiché pour le raccourci."
+              },
+              "command": {
+                "type": "string",
+                "description": "Commande shell exécutée dans le terminal."
+              },
+              "terminalName": {
+                "type": "string",
+                "description": "Nom du terminal (pour distinguer plusieurs sessions)."
+              },
+              "cwd": {
+                "type": "string",
+                "description": "Répertoire de travail (facultatif)."
+              },
+              "env": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Variables d'environnement à injecter (facultatif)."
+              },
+              "reuse": {
+                "type": "boolean",
+                "default": true,
+                "description": "Réutiliser le terminal s'il existe déjà."
+              },
+              "focus": {
+                "type": "boolean",
+                "default": true,
+                "description": "Mettre le terminal au premier plan après exécution."
+              },
+              "statusBar": {
+                "type": "boolean",
+                "default": false,
+                "description": "Afficher ce raccourci dans la barre d'état (si global désactivé)."
+              },
+              "codicon": {
+                "type": "string",
+                "description": "Icône codicon (ex: beaker, rocket). Utilisé pour la barre d'état.",
+                "default": "terminal"
+              },
+              "statusBarText": {
+                "type": "string",
+                "description": "Texte personnalisé pour le bouton de barre d'état.",
+                "default": ""
+              },
+              "icon": {
+                "type": "object",
+                "description": "Icônes personnalisées (light/dark) utilisées dans la vue Explorer.",
+                "properties": {
+                  "light": { "type": "string" },
+                  "dark": { "type": "string" }
+                }
+              }
+            }
+          },
+          "default": [
+            {
+              "id": "build",
+              "label": "Build",
+              "command": "npm run build",
+              "terminalName": "Build",
+              "reuse": true,
+              "focus": true,
+              "statusBar": true,
+              "codicon": "tools",
+              "icon": {
+                "light": "images/light/build.svg",
+                "dark": "images/dark/build.svg"
+              }
+            },
+            {
+              "id": "test",
+              "label": "Test",
+              "command": "npm test",
+              "terminalName": "Test",
+              "reuse": true,
+              "focus": true,
+              "statusBar": true,
+              "codicon": "beaker",
+              "icon": {
+                "light": "images/light/test.svg",
+                "dark": "images/dark/test.svg"
+              }
+            },
+            {
+              "id": "deploy",
+              "label": "Deploy",
+              "command": "echo Deploy… && ./deploy.sh",
+              "terminalName": "Deploy",
+              "reuse": false,
+              "focus": true,
+              "statusBar": false,
+              "codicon": "rocket",
+              "icon": {
+                "light": "images/light/deploy.svg",
+                "dark": "images/dark/deploy.svg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.19.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.24.0"
+  }
+}
